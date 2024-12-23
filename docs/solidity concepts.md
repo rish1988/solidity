@@ -45,26 +45,26 @@ contract Property {
         owner = msg.sender;
     }
 
-		// Function modifier
-		modifier onlyOwner() {
-			require(msg.sender = owner);
-			_;
-		}
+    // Function modifier
+    modifier onlyOwner() {
+		require(msg.sender = owner);
+		_;
+    }
 		
-		function changeOwner(address _owner) public onlyOwner {
-			owner = _owner;
-		}
+    function changeOwner(address _owner) public onlyOwner {
+		owner = _owner;
+    }
 		
-		function setPrice(uint _price) public {
-			price = _price;
-		}
+	function setPrice(uint _price) public {
+		price = _price;
+	}
 		
-		function getPrice() view public returns (uint) {
-			return price;
-		}
+	function getPrice() view public returns (uint) {
+		return price;
+	}
 		
-		// Event
-		event OwnerChanged(address owner);
+	// Event
+	event OwnerChanged(address owner);
 }
 ```
 
@@ -121,7 +121,7 @@ pragma solidity >=0.6.0 <0.9.0;
 
 // Contract showing usage of state variables
 contract Property {
-		// Price is a state variable which is initialized to default value of 0.
+	// Price is a state variable which is initialized to default value of 0.
     uint private price;
     
     // Name is a state variable which is initialized to assigned value of "Rishab"
@@ -160,26 +160,26 @@ contract Property {
     // are stored on the stack.
     function localVariableStack() public pure returns (int) {
     
-    	// x is local variable stored on the stack (free).
-			int x = 5;
+		// x is local variable stored on the stack (free).
+		int x = 5;
 			
-			// An operation is performed on the local variable stored on stack.
-			x = x * 5;
+		// An operation is performed on the local variable stored on stack.
+		x = x * 5;
 			
-			// The modified variable from the stack is returned.
-			return x;
-    }
+		// The modified variable from the stack is returned.
+		return x;
+	}
     
-    // This shows an example of string/array/mapping/struct data type which are by default
-    // stored in the storage, and where the type of storage - storage, memory, calldata needs
-    // to be specified. The return type of this function is also `memory` string.
-    function localVariableMemory() public pure returns (memory string) {
+	// This shows an example of string/array/mapping/struct data type which are by default
+	// stored in the storage, and where the type of storage - storage, memory, calldata needs
+	// to be specified. The return type of this function is also `memory` string.
+	function localVariableMemory() public pure returns (memory string) {
 
-			// If memory keyword is ommitted there will be a compiler error.
-    	memory string name = "ETH";
+		// If memory keyword is ommitted there will be a compiler error.
+		memory string name = "ETH";
     	
-    	return name;
-    }
+		return name;
+	}
 }
 ```
 
@@ -542,7 +542,7 @@ pragma solidity >=0.6.0 <0.9.0;
 // Contract showing how to receive ETH in a contract
 contract Deposit {
 	// The receive function does not need a body.
-  // It is declared without a function keyword and as external and payable.
+	// It is declared without a function keyword and as external and payable.
 	receive() external payable {}
 	
 	// The fallback function just like receive function does not have a function keyword
@@ -649,8 +649,8 @@ pragma solidity >=0.6.0 <0.9.0;
 
 // Contract showing usage of fixed size array
 contract FixedSizeArray {
-		// Numbers is a fixed size array of size 3.
-		// The fixed sized array may or may not be initialized.
+	// Numbers is a fixed size array of size 3.
+	// The fixed sized array may or may not be initialized.
     uint[3] public numbers = [ 2, 3 ,4 ];
     
     // Bytes fixed sized array.
@@ -699,8 +699,8 @@ pragma solidity >=0.6.0 <0.9.0;
 
 // Contract showing usage of dynamically sized array
 contract DynamicSizeArray {
-		// Numbers is a dynamically sized array. 
-		// Its size changes as elements are pushed and popped.
+	// Numbers is a dynamically sized array. 
+	// Its size changes as elements are pushed and popped.
     uint[] public numbers;
     
     /// Adds an element to dynamically sized array numbers. 
@@ -772,9 +772,9 @@ pragma solidity >=0.6.0 <0.9.0;
 
 // Contract showing usage of dynamically sized array
 contract BytesAndStrings {
-		// b1 and s1 are used below to store the ASCII data.
-		// When accessing the b1 to read data from blockchain, you will see hex data 0x616263
-		// When accessing the s1 to read data from blockchain, you will see 'abc'
+	// b1 and s1 are used below to store the ASCII data.
+	// When accessing the b1 to read data from blockchain, you will see hex data 0x616263
+	// When accessing the s1 to read data from blockchain, you will see 'abc'
     bytes public b1 = 'abc';
     string public s1 = 'abc';
     
@@ -823,22 +823,22 @@ struct Instructor {
 
 // Academy is a contract that makes use of the structure Instructor
 contract Academy {
-		// academyInstructor is a variable that declared of Instructor type
+	// academyInstructor is a variable that declared of Instructor type
     Instructor public academyInstructor;
 
-		// A constructor that takes in age and name as arguments and initializes
-		// the storage referenced by the academyInstructor variable.
+	// A constructor that takes in age and name as arguments and initializes
+	// the storage referenced by the academyInstructor variable.
     constructor(uint _age, string memory _name) {
         academyInstructor.age = _age;
         academyInstructor.name = _name;
         academyInstructor.addr = msg.sender;
     }
 
-		// changeInstructor is a function that takes in three arguments - age, name, and address
-		// and updates the currently set instructor.
+	// changeInstructor is a function that takes in three arguments - age, name, and address
+	// and updates the currently set instructor.
     function changeInstructor(uint _age, string memory _name, address _addr) public {
-    		// Here we create an in memory instance of Instructor type.
-    		// Notice the syntax is <struct_name> ({ key1: value1, ...})
+		// Here we create an in memory instance of Instructor type.
+		// Notice the syntax is <struct_name> ({ key1: value1, ...})
         Instructor memory newInstructor = Instructor ({
               age: _age,
               name: _name,
@@ -883,17 +883,17 @@ enum State {
 // Academy is a contract that makes use of the enum State to represent 
 // the current state of the academy.
 contract Academy {
-		// The variable academyState is initialized to State.Open to represent 
-		// that the academy is open.
-		State public academyState = State.Open;
+	// The variable academyState is initialized to State.Open to represent 
+	// that the academy is open.
+	State public academyState = State.Open;
 }
 
 // School is a contract that makes use of the enum State to represent
 // the current state of the school.
 contract School {
-		// The variable schoolState is initialized to State.Closed to represent
-		// that the school is closed.
-		State public schoolState = State.Closed;
+	// The variable schoolState is initialized to State.Closed to represent
+	// that the school is closed.
+	State public schoolState = State.Closed;
 }
 ```
 
@@ -1100,7 +1100,7 @@ try/catch blocks are rarely used in solidity. The test condition that is expecte
 pragma solidity 0.8.14;
 
 contract WillThrow {
-		// This function when invoked would trigger Error with string message
+	// This function when invoked would trigger Error with string message
     function aRequireFunction() public pure {
         require(false, "Error message");
     } 
@@ -1130,7 +1130,7 @@ contract ErrorHandling {
 pragma solidity 0.8.14;
 
 contract WillThrow {
-		// This function when invoked would trigger Panic.
+	// This function when invoked would trigger Panic.
     function aAssertFunction() public pure {
         assert(false);
     } 
@@ -1162,9 +1162,9 @@ contract ErrorHandling {
 pragma solidity 0.8.14;
 
 contract WillThrow {
-		error NotAllowedError(string);
+	error NotAllowedError(string);
 		
-		// This function when invoked would trigger Error with string message
+	// This function when invoked would trigger Error with string message
     function aCustomErrorFunction() public pure {
         revert NotAllowedError("You are not allowed here");
     } 
